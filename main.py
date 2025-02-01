@@ -1,20 +1,13 @@
 from fastapi import FastAPI
-
-from config.database.session import Base, engine
+from fastapi.staticfiles import StaticFiles
+from apps.products.routers import router as product_router
 
 app = FastAPI()
 
 
-# Функция для создания таблиц в базе данных при запуске приложения
-def create_tables():
-    Base.metadata.create_all(bind=engine)
-
-# Выполняем создание таблиц при запуске сервера
-@app.on_event("startup")
-def on_startup():
-    create_tables()
+# Подключаем роутер для продуктов
+app.include_router(product_router)
 
 
-@app.get("/")
-def read_root():
-    return {"message": "PostgreSQL подключен!"}
+# Отдача статических файлов
+app.mount("/static", StaticFiles(directory="apps/static"), name="static")

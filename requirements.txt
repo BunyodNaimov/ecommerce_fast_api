@@ -6,4 +6,5 @@ python-multipart==0.0.20
 pydantic-settings==2.7.1
 psycopg2-binary==2.9.10
 python-decouple==3.8
+alembic==1.14.1
 # pip install databases[postgresql]

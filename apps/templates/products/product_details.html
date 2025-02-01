@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ product.name }}</h2>
+<img src="{{ product.image_path }}" alt="{{ product.name }}" width="300">
+<p>Описание: {{ product.description }}</p>
+<p>Цена: {{ product.price }} $</p>
+<p>Продавец: {{ product.seller.name }}</p>
+<p>Категория: {{ product.category.name if product.category else "Без категории" }}</p>
+{% endblock %}
