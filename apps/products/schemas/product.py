@@ -1,14 +1,13 @@
-from fastapi.openapi.models import Schema
+from pydantic import BaseModel
 
 
-class ProductSchema(Schema):
+class ProductSchema(BaseModel):
     id: int
     name: str
+    category_id: int
 
-class CreateProductSchema(Schema):
+
+class CreateProductSchema(BaseModel):
     name: str
     price: float
     category_id: int
-
-    class Config:
-        from_attributes = True

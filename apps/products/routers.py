@@ -13,12 +13,12 @@ from .services.product import ProductService
 router = APIRouter()
 
 
-@router.get("/products", response_model=List[ProductSchema])
+@router.get("/", response_model=List[ProductSchema])
 def get_all_products(db: Session = Depends(get_db)):
     return ProductService(db).get_all_products()
 
 
-@router.post("/")
+@router.post("/", response_model=ProductSchema)
 def create_product(product: CreateProductSchema,
                    db: Session = Depends(get_db)):
     return ProductService(db).create_product(product)
