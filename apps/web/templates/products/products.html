@@ -1,0 +1,15 @@
+{% extends "../base.html" %}
+
+{% block content %}
+<h2>Список товаров</h2>
+<div class="product-list">
+    {% for product in products %}
+    <div class="product-item">
+        <img src="{{ product.image_path }}" alt="{{ product.name }}" width="100">
+        <h3><a href="/products/{{ product.id }}">{{ product.name }}</a></h3>
+        <p>Цена: {{ product.price }} $</p>
+        <p>Категория: {{ product.category.name if product.category else "Без категории" }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
